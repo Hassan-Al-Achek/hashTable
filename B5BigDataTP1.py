@@ -1,7 +1,7 @@
 from random import randint
 from hashfunctions import hassan_alachek_simpleModuloHash, hassan_alachek_efficientHash, hassan_alachek_sdbm, \
     hassan_alachek_cyclicShift
-from fileReader import fileReader
+from fileReader import fileReader, fileLen
 import matplotlib.pyplot as plt
 
 
@@ -87,9 +87,10 @@ def plotCollisionNumber(X):
 #     printStatistic(X)
 
 def main():
-    M = 800000
     hashFunction = ["simpleModuloHash", "efficientHash", "sdbm", "cyclicShift"]
     fileName = ['word.txt']
+    M = int((10 / 3) * fileLen(fileName[0]))
+    print(M)
     X = [createTAD(M) for _ in range(4)]
 
     lines = fileReader(fileName[0])
